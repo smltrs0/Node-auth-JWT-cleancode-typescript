@@ -34,7 +34,6 @@ export class AuthController {
     };
 
     loginUser = (req: Request, res: Response) => {
-
         const [validatorError, ValidatedData] = LoginUserDto.create(req.body);
         if (validatorError.length > 0) return res.status(400).json(validatorError);
 

@@ -49,6 +49,7 @@ export class AuthController {
 
 
     getUsers = (req: Request, res: Response) => {
+
         UserModel.find().then((users) => {
             res.json(users);
             console.log('Only to test');

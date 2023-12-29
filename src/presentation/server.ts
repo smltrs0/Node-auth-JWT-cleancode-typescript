@@ -26,7 +26,7 @@ export class Server{
         this.app.use(this.routes);
         // Server start
         this.app.listen(this.port, () => {
-            console.log('Server running at http://localhost:'+ this.port);
+            console.log('🚀 Server running at http://localhost:'+ this.port);
         });
     }
 }

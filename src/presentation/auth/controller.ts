@@ -1,6 +1,6 @@
 import { AuthRepository, CustomError, LoginUserDto, RegisterUserDto } from '../../domain';
 import { LoginUserUseCase, RegisterUserUseCase } from '../../aplication/auth';
-import { UserModel } from '../../data/mongodb';
+import { UserService } from '../../data/Model/UserService';
 import { Request, Response } from 'express';
 
 export class AuthController {
@@ -15,6 +15,7 @@ export class AuthController {
         }
         // TODO: Log error
         // 1. Log error and send email to admin
+        console.log('time: ', new Date().toISOString(), 'error: ', error);
         return response.status(500).json('Internal Server Error');
     }
 
@@ -49,9 +50,9 @@ export class AuthController {
 
     getUsers = (req: Request, res: Response) => {
 
-        UserModel.find().then((users) => {
-            res.json(users);
-            console.log('Only to test');
+        const userService = new UserService();
+        userService.getUsers().then((data) => {
+            res.json(data);
         }).catch((error) => {
             this.handlerError(error, res);
         });

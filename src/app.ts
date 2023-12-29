@@ -1,5 +1,4 @@
 import { envs } from "./config/envs";
-import { MongoDatabase } from "./data/mongodb/mongo-database";
 import { AppRoutes } from "./presentation/routes";
 import { Server } from "./presentation/server";
 
@@ -7,14 +6,21 @@ import { Server } from "./presentation/server";
   await main();
 })();
 
-async function main() {
-  await MongoDatabase.connect({
-    mongoUrl: envs.db.mongo_host,
-    dbName: envs.db.mongo_db_name,
-  });
 
+async function main() {
+  // Start server
   new Server({
     port: envs.port,
     routes: AppRoutes.routes,
   }).start();
+
+  // Print logo in console text "server runing" 
+  console.log(`
+      ███████╗████████╗ ██████╗ ██████╗ ███████╗     █████╗ ██████╗ ██╗
+      ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝    ██╔══██╗██╔══██╗██║
+      ███████╗   ██║   ██║   ██║██████╔╝█████╗      ███████║██████╔╝██║
+      ╚════██║   ██║   ██║   ██║██╔══██╗██╔══╝      ██╔══██║██╔═══╝ ██║
+      ███████║   ██║   ╚██████╔╝██║  ██║███████╗    ██║  ██║██║     ██║
+      ╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝    ╚═╝  ╚═╝╚═╝     ╚═╝
+  `);
 }

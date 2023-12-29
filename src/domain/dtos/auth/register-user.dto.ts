@@ -2,26 +2,26 @@ import { Validators } from "../../../config/Validators";
 
 export class RegisterUserDto {
 
-    name: string;
+    username: string;
     email: string;
     password: string;
-    role: string[] | undefined;
-    img: string | undefined;
+    // role: string[] | undefined;
+    // img: string | undefined;
 
-    private constructor(name: string, email: string, password: string, role?: string[], img?: string) {
-        this.name = name;
+    private constructor(username: string, email: string, password: string) {
+        this.username = username;
         this.email = email;
         this.password = password;
-        this.role = role;
-        this.img = img;
+        // this.role = role;
+        // this.img = img;
     }
 
     static create(object: { [key: string]: any }): [string[], RegisterUserDto?] {
 
-        const { name, email, password = '', role, img } = object;
+        const { username, email, password = '' } = object;
         const error: string[] = [];
 
-        if (!name) error.push('name is required');
+        if (!username) error.push('username is required');
         if (!email) error.push('email is required');
         if (!password) error.push('password is required');
         if (!Validators.validateEmail(email)) error.push('email is invalid');
@@ -29,7 +29,7 @@ export class RegisterUserDto {
 
         return [
             error,
-            new RegisterUserDto(name, email, password, role, img)
+            new RegisterUserDto(username, email, password)
         ];
     }
 }

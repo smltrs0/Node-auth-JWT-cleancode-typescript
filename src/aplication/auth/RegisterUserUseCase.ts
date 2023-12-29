@@ -2,13 +2,13 @@ import { JwtAdapter } from "../../config/jwt.adater";
 import { CustomError, RegisterUserDto } from "../../domain";
 import { AuthRepository } from "../../domain/repositories/auth.repository";
 
-type SingToken = ( payload: Object, duration : string )=> Promise<string | undefined>;
+type SingToken = (payload: object, duration: string) => Promise<string | undefined>;
 
 interface UserToken {
     token: string;
     user: {
         id: string;
-        name: string;
+        username: string;
         email: string;
     }
 }
@@ -27,7 +27,7 @@ export class RegisterUserUseCase {
      * @throws Error
      */
     async execute(registerUserDto: RegisterUserDto): Promise<UserToken> {
-        
+
         const user = await this.authRespository.register(registerUserDto!);
         if (!user) throw CustomError.badRequest('Error creating user');
 
@@ -38,7 +38,7 @@ export class RegisterUserUseCase {
             token,
             user : {
                 id: user.id,
-                name: user.name,
+                username: user.username,
                 email: user.email
             }
         };

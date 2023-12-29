@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { JwtAdapter } from "../../config/jwt.adater";
-import { UserModel } from "../../data/mongodb";
+import { UserService } from "../../data/Model/UserService";
 
 export class AuthMiddleware {
     
@@ -21,8 +21,9 @@ export class AuthMiddleware {
     try {
       const payload = await JwtAdapter.validateJwt<{ id: string }>(token);
       if (!payload) return res.status(401).json({ error: "Unauthorized" });
-
-      const user = await UserModel.findById(payload.id);
+      const userService = new UserService();
+      
+      const user = await userService.getUserById(payload.id);
 
       // Validate why this user is not found in dabatabase and token is valid
       if (!user) return res.status(500).json({ error: "Unauthorized" });

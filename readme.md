@@ -29,10 +29,13 @@ npm install
 ## Running the app
 
 ```bash
+# prisma migration
+$ npx prisma migrate dev
 # development
 $ npm run dev
 ```
-
+Information migration prisma
+[a link](https://www.prisma.io/docs/getting-started/quickstart#3-run-a-migration-to-create-your-database-tables-with-prisma-migrate)
 ## Test
 
 ```bash

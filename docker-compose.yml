@@ -11,3 +11,12 @@ services:
       - ./data/db:/data/db
     ports:
       - 27017:27017
+  postgres:
+    image: postgres:16.2
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./data/postgresdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432

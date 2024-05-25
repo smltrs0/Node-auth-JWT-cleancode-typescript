@@ -16,12 +16,12 @@ export class AuthMiddleware {
 
     const token = autorization.split(" ").at(1) || "";
 
-    if ("2" == token) console.log("2", NaN);
-
     try {
       const payload = await JwtAdapter.validateJwt<{ id: string }>(token);
       if (!payload) return res.status(401).json({ error: "Unauthorized" });
       const userService = new UserService();
+
+      if (!payload.id) return res.status(401).json({ error: "Unauthorized" });
       
       const user = await userService.getUserById(payload.id);
 

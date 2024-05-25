@@ -6,7 +6,7 @@ export default  class UserService {
         this.prisma = new PrismaClient();
     }
     async getUserByEmail(email: string) {
-        return this.prisma.user.findUnique({ where: { email: email }, select: { username: true, email: true, password: true } });
+        return this.prisma.user.findUnique({ where: { email: email }, select: { id: true, username: true, email: true, password: true } });
     }
     async createUser(user: any) {
         return this.prisma.user.create({ data: user, select: { username: true, email: true } });

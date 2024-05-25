@@ -21,8 +21,7 @@ export class SqlAuthDataSourceImpl implements AuthDataSource {
         try {
             // 1. Check if user exists in database by email
             const emailExists = await this.userService.getUserByEmail(email);
-
-            if (emailExists) throw CustomError.badRequest('Register not completed, error internal');
+            if (emailExists) throw CustomError.conflict('Email already exists');
 
             const user = await this.userService.createUser({
                 username: username,

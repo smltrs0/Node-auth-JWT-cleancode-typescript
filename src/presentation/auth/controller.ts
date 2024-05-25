@@ -1,6 +1,5 @@
 import { AuthRepository, CustomError, LoginUserDto, RegisterUserDto } from '../../domain';
 import { LoginUserUseCase, RegisterUserUseCase } from '../../aplication/auth';
-import { UserService } from '../../data/Model/UserService';
 import { Request, Response } from 'express';
 
 export class AuthController {
@@ -50,11 +49,12 @@ export class AuthController {
 
     getUsers = (req: Request, res: Response) => {
 
-        const userService = new UserService();
-        userService.getUsers().then((data) => {
-            res.json(data);
-        }).catch((error) => {
-            this.handlerError(error, res);
-        });
+        res.json('getUsers');
+        //const userService = new UserService();
+        //userService.getUsers().then((data) => {
+        //    res.json(data);
+        //}).catch((error) => {
+        //    this.handlerError(error, res);
+        //});
     };
 }

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { JwtAdapter } from "../../config/jwt.adater";
-import { UserService } from "../../data/Model/UserService";
+import UserService from "../../../data/Model/UserService";
 
 export class AuthMiddleware {
     

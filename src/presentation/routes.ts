@@ -9,6 +9,10 @@ export class AppRoutes {
 
     router.use("/api/user", AuthRoutes.routes);
 
+    router.use("*", (req, res) => {
+      res.status(404).json({ message: "Not Found" });
+    });
+
     return router;
   }
 }

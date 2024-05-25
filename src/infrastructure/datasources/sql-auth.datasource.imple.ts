@@ -43,11 +43,11 @@ export class SqlAuthDataSourceImpl implements AuthDataSource {
             const { email, password } = loginUserDto;
 
             // 1. Check if user exists in database by email
-            const user = await this.userService.getUserByEmail(email);
-            if (!user) throw CustomError.badRequest('Login not completed, error internal');
+            const user = await this.userService.getUserByEmail(email.trim());
+            if (!user) throw CustomError.badRequest('The combination between email and password does not match.');
             // 2. Compare password
-            const passwordMatch = this.bcryptCompare(password, password);
-            if (!passwordMatch) throw CustomError.badRequest('Login not completed, error internal');
+            const passwordMatch = this.bcryptCompare(password, user.password);
+            if (!passwordMatch) throw CustomError.badRequest('The combination between email and password does not match.');
 
             return UserMapper.userEntiFromObject(user);
 

@@ -1,8 +1,8 @@
 import { BcriptAdapter } from "../../config/bcrypt";
-import { UserService } from "../../data/Model/UserService";
 import { AuthDataSource, CustomError, RegisterUserDto, UserEntity } from "../../domain";
-import { LoginUserDto } from "../../domain/dtos/auth/login-user.dto";
+import { LoginUserDto } from "../../domain";
 import { UserMapper } from "../mappers/user.mapper";
+import UserService from "../../../data/Model/UserService";
 
 type HashFcuntion = (password: string) => string;
 type CompareFunction = (password: string, hash: string) => boolean;
@@ -46,9 +46,8 @@ export class SqlAuthDataSourceImpl implements AuthDataSource {
             // 1. Check if user exists in database by email
             const user = await this.userService.getUserByEmail(email);
             if (!user) throw CustomError.badRequest('Login not completed, error internal');
-            console.log(user.password);
             // 2. Compare password
-            const passwordMatch = this.bcryptCompare(password, user.password);
+            const passwordMatch = this.bcryptCompare(password, password);
             if (!passwordMatch) throw CustomError.badRequest('Login not completed, error internal');
 
             return UserMapper.userEntiFromObject(user);

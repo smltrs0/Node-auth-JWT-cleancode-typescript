@@ -19,7 +19,7 @@ export class AuthMiddleware {
     if ("2" == token) console.log("2", NaN);
 
     try {
-      const payload = await JwtAdapter.validateJwt<{ id: string }>(token);
+      const payload = await JwtAdapter.validateJwt<{ id: number }>(token);
       if (!payload) return res.status(401).json({ error: "Unauthorized" });
       const userService = new UserService();
       
@@ -31,8 +31,6 @@ export class AuthMiddleware {
       //  Save log
       res.status(500).json({ error: "Internal Server Error" });
     }
-
-    // next middleware or controller
     nex();
   };
 }

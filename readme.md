@@ -15,7 +15,7 @@ Built with:
 - [NodeJS](https://nodejs.org/en/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Express](https://expressjs.com/)
-- [Mongoose](https://mongoosejs.com/)
+- [Prisma](https://www.prisma.io/)
 - [JWT](https://jwt.io/)
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
 - [Jest](https://jestjs.io/) - In progress
@@ -166,7 +166,7 @@ The clean architecture is divided into four layers:
 - [x] Implement JWT Token
 - [ ] Refresher JWT Token
 - [x] Implement Bcrypt
-- [x] Implement Mongoose
+- [x] Implement prisma
 - [ ] Implement Jest
 - [ ] Implement Swagger
 - [x] Implement Docker

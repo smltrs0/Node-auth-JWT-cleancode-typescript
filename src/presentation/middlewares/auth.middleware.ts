@@ -19,7 +19,7 @@ export class AuthMiddleware {
     if ("2" == token) console.log("2", NaN);
 
     try {
-      const payload = await JwtAdapter.validateJwt<{ id: number }>(token);
+      const payload = await JwtAdapter.validateJwt<{ id: string }>(token);
       if (!payload) return res.status(401).json({ error: "Unauthorized" });
       const userService = new UserService();
       

@@ -5,8 +5,16 @@ export class CustomError extends Error {
         message: string
     ) {
         super(message);
+        Object.setPrototypeOf(this, CustomError.prototype);
     }
-
+    toJSON() {
+        return {
+            error: {
+                message: this.message,
+                statusCode: this.statusCode
+            }
+        };
+    }
     static badRequest(message: string) {
         return new CustomError(400, message);
     }
@@ -26,5 +34,9 @@ export class CustomError extends Error {
     static InternalServerError(message: string = 'Internal Server Error') {
         // Log de errores y envio de notificacion al responsable
         return new CustomError(500, message);
+    }
+
+    static conflict(message: string) {
+        return new CustomError(409, message);
     }
 }

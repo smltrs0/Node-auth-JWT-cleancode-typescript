@@ -11,7 +11,7 @@ export class AuthController {
 
     private handlerError(error: unknown, response: Response) {
         if (error instanceof CustomError) {
-            return response.status(error.statusCode).json(error.message);
+            return response.status(error.statusCode).json(error.toJSON());
         }
         // TODO: Log error
         // 1. Log error and send email to admin

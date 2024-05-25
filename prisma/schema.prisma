@@ -12,20 +12,20 @@ datasource db {
 
 // include User model from UserModel.prisma file
 model user {
-  id       Int      @id @default(autoincrement())
-  username String
-  email    String   @unique
-  password String
+  id        Int      @id @default(autoincrement())
+  username  String
+  email     String   @unique
+  password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  roles   roles[]
+  roles     roles[]
 }
 
 model roles {
-  id        Int     @id @default(autoincrement())
-  title     String
-  description   String?
-  published Boolean @default(false)
-  author    user    @relation(fields: [userId], references: [id])
-  userId  Int
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String?
+  published   Boolean @default(false)
+  author      user?   @relation(fields: [userId], references: [id])
+  userId      Int?    @map("user_id")
 }

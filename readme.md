@@ -107,8 +107,7 @@ The clean architecture is divided into four layers:
     │       └─ server.ts
 
 ### Refresh JWT
-
-    `
+    ```bash
     +--------+                                           +---------------+
     |        |--(A)------- Authorization Grant --------->|               |
     |        |                                           |               |
@@ -158,7 +157,6 @@ The clean architecture is divided into four layers:
     (H)  The authorization server authenticates the client and validates
         the refresh token, and if valid, issues a new access token (and,
         optionally, a new refresh token).
-    `
 
 ## Todo
 

@@ -6,3 +6,4 @@ data/postgresdata/
 package-lock.json
 prisma/migrations/
 .idea/
+coverage/

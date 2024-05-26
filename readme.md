@@ -67,7 +67,6 @@ The clean architecture is divided into four layers:
 
 ### Folder structure
 
-    ```bash
     ├── src
     │   ├── aplication  # Application layer (use cases)
     │   │   ├── auth
@@ -107,7 +106,6 @@ The clean architecture is divided into four layers:
     │       └─ server.ts
 
 ### Refresh JWT
-    ```bash
     +--------+                                           +---------------+
     |        |--(A)------- Authorization Grant --------->|               |
     |        |                                           |               |

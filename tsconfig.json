@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "strict": true,
+        "baseUrl": ".",
+        "paths": {
+            "@aplication/*": [
+                "./src/aplication/*"
+            ],
+            "@infrastructure/*": [
+                "./src/infrastructure/*"
+            ],
+            "@domain/*": [
+                "./src/domain/*"
+            ],
+            "@presentation/*": [
+                "./src/presentation/*"
+            ]
+        },
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true
+    }
+}

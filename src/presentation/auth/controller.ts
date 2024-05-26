@@ -1,23 +1,17 @@
-import { AuthRepository, CustomError, LoginUserDto, RegisterUserDto } from '../../domain';
+import { AuthRepository, LoginUserDto, RegisterUserDto } from '../../domain';
 import { LoginUserUseCase, RegisterUserUseCase } from '../../aplication/auth';
 import { Request, Response } from 'express';
 import UserService from "../../../data/Model/UserService";
+import { MainController } from '@presentation/main/controller';
 
-export class AuthController {
+export class AuthController extends MainController {
 
     constructor(
         private readonly authRepository: AuthRepository
-    ) { }
-
-    private handlerError(error: unknown, response: Response) {
-        if (error instanceof CustomError) {
-            return response.status(error.statusCode).json(error.toJSON());
-        }
-        // TODO: Log error
-        // 1. Log error and send email to admin
-        console.log('time: ', new Date().toISOString(), 'error: ', error);
-        return response.status(500).json('Internal Server Error');
+    ) { 
+        super();
     }
+
 
     registerUser = (req: Request, res: Response) => {
 
@@ -30,7 +24,7 @@ export class AuthController {
             .execute(registerUserDto!).then((data) => {
                 res.json(data);
             }).catch((error) => {
-                this.handlerError(error, res);
+                this.handlerError(error, res); 
             });
     };
 

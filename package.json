@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsnd --respawn src/app.ts",
+    "dev": "ts-node-dev --respawn -r tsconfig-paths/register src/app.ts",
     "build": "rimraf ./dist && tsc",
     "start": "npm run build && node ./dist/app.ts",
     "eslint": "npx eslint --ext .ts src --fix"
@@ -35,6 +35,7 @@
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "prettier": "^3.0.3",
-    "prisma": "^5.14.0"
+    "prisma": "^5.14.0",
+    "tsconfig-paths": "^4.2.0"
   }
 }

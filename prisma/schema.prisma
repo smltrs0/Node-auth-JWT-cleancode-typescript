@@ -19,6 +19,7 @@ model user {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   roles     roles[]
+  deleted   DateTime? 
 }
 
 model roles {

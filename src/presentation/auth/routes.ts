@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { AuthController } from "./controller";
-import { AuthRepositoryImple, SqlAuthDataSourceImpl } from "../../infrastructure";
+import { AuthController } from "@presentation/auth/controller";
+import { AuthRepositoryImple, SqlAuthDataSourceImpl } from "@infrastructure/index";
 import { AuthMiddleware } from "../middlewares/auth.middleware";
 
 export class AuthRoutes {
